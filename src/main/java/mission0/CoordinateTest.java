@@ -39,7 +39,6 @@ public class CoordinateTest {
         noCoordTest(noCoord_testCase);
     }
 
-
     @Test
     public void oneCoord(){
         oneCoordTest();
@@ -50,7 +49,6 @@ public class CoordinateTest {
         overTwoCoordTest();
     }
 
-
     @Test
     public void invalidCoord(){
         InvalidCoordTest();
@@ -60,7 +58,6 @@ public class CoordinateTest {
     public void cleanUp(){
         coord = null;
     }
-
 
     private void setNormalCoord_case(){ // (1,1~24)~(1~24,1) 모든 일반적인 경우 테스트 케이스 func
         for(int x=0;x<24;x++){
