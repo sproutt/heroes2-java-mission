@@ -35,7 +35,7 @@ public class Coordinate {
     }
 
     public void printXY() { // 좌표 print func
-        if(x!=-1 && y!=-1){
+        if(x!=initValue && y!=initValue){
             System.out.printf("x : %d, y : %d\n", this.x, this.y);
         }
     }
