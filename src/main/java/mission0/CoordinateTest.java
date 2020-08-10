@@ -13,16 +13,16 @@ public class CoordinateTest {
     private final int negativeCase = -1;
 
     int allCase = 24*24;
-    String[] normalCoord_test = new String[allCase];
+    String[] normalCoord_testCase = new String[allCase];
     int[][] normalCoord_actual = new int[allCase][2];
 
-    String[] noCoord_test={"()", "(,)"}; //값이 없는 경우
+    String[] noCoord_testCase={"()", "(,)"}; //값이 없는 경우
 
-    String[] oneCoord_test = new String[30];
+    String[] oneCoord_testCase = new String[30];
 
-    String[] overTwoCoord_test = new String[20];
+    String[] overTwoCoord_testCase = new String[20];
 
-    String[] invalidCoord_test = new String[20];
+    String[] invalidCoord_testCase = new String[20];
 
     @Before
     public void setUp(){
@@ -31,49 +31,31 @@ public class CoordinateTest {
 
     @Test
     public void normalCoord(){
-        setNormalCoord_case();
-        for(int i=0;i<allCase;i++){
-            coord.coordExtraction(normalCoord_test[i]);
-            assertEquals(normalCoord_actual[i][0],coord.getX());
-            assertEquals(normalCoord_actual[i][1],coord.getY());
-        }
+        normalCoordTest();
     }
 
     @Test
     public void noCoord(){
-        for(int i=0; i< noCoord_test.length;i++){
-            coord.coordExtraction(noCoord_test[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
-        }
+        noCoordTest(noCoord_testCase);
     }
+
+
     @Test
     public void oneCoord(){
-        setOneCoord_test();
-        for(int i=0; i< oneCoord_test.length;i++){
-            coord.coordExtraction(oneCoord_test[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
-        }
+        oneCoordTest();
     }
+
     @Test
     public void overTwoCoord(){
-        setOverTwoCoord_test();
-        for(int i=0; i< overTwoCoord_test.length;i++){
-            coord.coordExtraction(overTwoCoord_test[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
-        }
+        overTwoCoordTest();
     }
+
+
     @Test
     public void invalidCoord(){
-        setInvalidCoord_test();
-        for(int i=0; i< invalidCoord_test.length;i++){
-            coord.coordExtraction(invalidCoord_test[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
-        }
+        InvalidCoordTest();
     }
+
     @After
     public void cleanUp(){
         coord = null;
@@ -84,7 +66,7 @@ public class CoordinateTest {
         for(int x=0;x<24;x++){
             for(int y=0;y<24;y++){
                 int location = x*24+y;
-                normalCoord_test[location]="("+(x+1)+","+(y+1)+")";
+                normalCoord_testCase[location]="("+(x+1)+","+(y+1)+")";
                 normalCoord_actual[location][0]=x+1;
                 normalCoord_actual[location][1]=y+1;
             }
@@ -94,15 +76,15 @@ public class CoordinateTest {
     private void setOneCoord_test(){ // 무작위 값이 하나인 테스트 케이스 func
         for(int i=0;i<10;i++){
             int x = rand.nextInt(24)+1;
-            oneCoord_test[i]="("+x+")";
+            oneCoord_testCase[i]="("+x+")";
         }
         for(int i=10;i<20;i++){
             int x = rand.nextInt(24)+1;
-            oneCoord_test[i]="(,"+x+")";
+            oneCoord_testCase[i]="(,"+x+")";
         }
         for(int i=20;i<30;i++){
             int x = rand.nextInt(24)+1;
-            oneCoord_test[i]="("+x+",)";
+            oneCoord_testCase[i]="("+x+",)";
         }
     }
 
@@ -117,7 +99,7 @@ public class CoordinateTest {
             int x=rand.nextInt(24)+1;
             str+=x+")";
 
-            overTwoCoord_test[i]=str;
+            overTwoCoord_testCase[i]=str;
         }
     }
 
@@ -125,12 +107,57 @@ public class CoordinateTest {
         for(int i=0;i<10;i++){
             int x = rand.nextInt(10)+25;
             int y = rand.nextInt(25)-25;
-            invalidCoord_test[i] = "("+x+","+y+")";
+            invalidCoord_testCase[i] = "("+x+","+y+")";
         }
         for(int i=10;i<20;i++){
             int x = rand.nextInt(10)+25;
             int y = rand.nextInt(25)-25;
-            invalidCoord_test[i] = "("+y+","+x+")";
+            invalidCoord_testCase[i] = "("+y+","+x+")";
+        }
+    }
+
+    private void normalCoordTest() {
+        setNormalCoord_case();
+        for(int i=0;i<allCase;i++){
+            coord.coordExtraction(normalCoord_testCase[i]);
+            assertEquals(normalCoord_actual[i][0],coord.getX());
+            assertEquals(normalCoord_actual[i][1],coord.getY());
+        }
+    }
+
+    private void noCoordTest(String[] noCoord_testCase) {
+        for (int i = 0; i < noCoord_testCase.length; i++) {
+            coord.coordExtraction(noCoord_testCase[0]);
+            assertEquals(negativeCase, coord.getX());
+            assertEquals(negativeCase, coord.getY());
+        }
+    }
+
+    private void oneCoordTest() {
+        setOneCoord_test();
+        for(int i=0; i< oneCoord_testCase.length;i++){
+            coord.coordExtraction(oneCoord_testCase[0]);
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
+        }
+    }
+
+    private void overTwoCoordTest() {
+        setOverTwoCoord_test();
+        for(int i=0; i< overTwoCoord_testCase.length;i++){
+            coord.coordExtraction(overTwoCoord_testCase[0]);
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
+        }
+    }
+
+    private void InvalidCoordTest() {
+        setInvalidCoord_test();
+        for(int i=0; i< invalidCoord_testCase.length;i++){
+            coord.coordExtraction(invalidCoord_testCase[0]);
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
         }
     }
 }
+
