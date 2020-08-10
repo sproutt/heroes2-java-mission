@@ -18,7 +18,7 @@ public class CoordinateTest {
 
     String[] noCoord_testCase={"()", "(,)"}; //값이 없는 경우
 
-    String[] oneCoord_testCase = new String[30];
+    String[] oneCoord_testCase = new String[20];
 
     String[] overTwoCoord_testCase = new String[20];
 
@@ -71,7 +71,7 @@ public class CoordinateTest {
     }
 
     private void setOneCoord_test(){ // 무작위 값이 하나인 테스트 케이스 func
-        for(int i=0;i<10;i++){
+        for(int i=0;i<20;i++){
             int x = rand.nextInt(24)+1;
             oneCoord_testCase[i]="("+x+")";
             oneCoord_testCase[i]="(,"+x+")";
