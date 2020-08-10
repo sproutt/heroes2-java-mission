@@ -36,7 +36,7 @@ public class CoordinateTest {
 
     @Test
     public void noCoord(){
-        noCoordTest(noCoord_testCase);
+        noCoordTest();
     }
 
     @Test
@@ -116,7 +116,7 @@ public class CoordinateTest {
         }
     }
 
-    private void noCoordTest(String[] noCoord_testCase) {
+    private void noCoordTest() {
         for (int i = 0; i < noCoord_testCase.length; i++) {
             coord.coordExtraction(noCoord_testCase[0]);
             assertEquals(negativeCase, coord.getX());
