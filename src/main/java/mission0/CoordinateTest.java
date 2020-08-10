@@ -77,13 +77,7 @@ public class CoordinateTest {
         for(int i=0;i<10;i++){
             int x = rand.nextInt(24)+1;
             oneCoord_testCase[i]="("+x+")";
-        }
-        for(int i=10;i<20;i++){
-            int x = rand.nextInt(24)+1;
             oneCoord_testCase[i]="(,"+x+")";
-        }
-        for(int i=20;i<30;i++){
-            int x = rand.nextInt(24)+1;
             oneCoord_testCase[i]="("+x+",)";
         }
     }
