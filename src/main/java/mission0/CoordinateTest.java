@@ -70,8 +70,8 @@ public class CoordinateTest {
         setInvalidCoord_test();
         for(int i=0; i< invalidCoord_test.length;i++){
             coord.coordExtraction(invalidCoord_test[0]);
-            assertEquals(-1,coord.getX());
-            assertEquals(-1,coord.getY());
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
         }
     }
     @After
