@@ -99,11 +99,7 @@ public class CoordinateTest {
             int x = rand.nextInt(10)+25;
             int y = rand.nextInt(25)-25;
             invalidCoord_testCase[i] = "("+x+","+y+")";
-        }
-        for(int i=10;i<20;i++){
-            int x = rand.nextInt(10)+25;
-            int y = rand.nextInt(25)-25;
-            invalidCoord_testCase[i] = "("+y+","+x+")";
+            invalidCoord_testCase[i+10] = "("+y+","+x+")";
         }
     }
 
