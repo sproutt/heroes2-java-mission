@@ -44,7 +44,7 @@ public class Coordinate {
         boolean ValidCase0 = value>0;
         boolean ValidCase25 = value<25;
 
-        if (ValidCase0||ValidCase25){
+        if (ValidCase0&&ValidCase25){
             return true;
         }
         return false;
