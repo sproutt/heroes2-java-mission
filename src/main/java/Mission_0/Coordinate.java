@@ -1,29 +1,21 @@
 package Mission_0;
 
 public class Coordinate {
+    private final int initValue = -1;
     private int x;
     private int y;
 
     public Coordinate(){
-        this.x = -1;
-        this.y = -1;
+        this.x = initValue;
+        this.y = initValue;
     }
 
-    private boolean isWrongValue(int value){ // 0 이하 25 이상인지 check func
-        boolean wrongCase_0 = value<=0;
-        boolean wrongCase_25 = value>=25;
-
-        if (wrongCase_0||wrongCase_25){
-            return true;
-        }
-        return false;
+    public int getX(){
+        return x;
     }
 
-    private void addCoord(int x, int y){ // 이상 없으면 x,y에 값 할당하는 add func
-        if(!isWrongValue(x) && !isWrongValue(y)) {
-            this.x = x;
-            this.y = y;
-        }
+    public int getY(){
+        return y;
     }
 
     public void coordExtraction(String input) { // 좌표를 추출하는 함수
@@ -48,10 +40,21 @@ public class Coordinate {
         }
     }
 
-    public int getX(){
-        return x;
+    private boolean isValidValue(int value){ // 0 이하 25 이상인지 check func
+        boolean ValidCase0 = value>0;
+        boolean ValidCase25 = value<25;
+
+        if (ValidCase0||ValidCase25){
+            return true;
+        }
+        return false;
     }
-    public int getY(){
-        return y;
+
+    private void addCoord(int x, int y){ // 이상 없으면 x,y에 값 할당하는 add func
+        if(isValidValue(x) && isValidValue(y)) {
+            this.x = x;
+            this.y = y;
+        }
     }
+
 }

@@ -23,6 +23,46 @@ public class CoordinateTest {
 
     String[] invalidCoord_test = new String[20];
 
+    @Before
+    public void setUp(){
+        coord = new Coordinate();
+        setNormalCoord_case();
+        setOneCoord_test();
+        setOverTwoCoord_test();
+        setInvalidCoord_test();
+    }
+
+    @Test
+    public void normalCoord(){
+        for(int i=0;i<allCase;i++){
+            coord.coordExtraction(normalCoord_test[i]);
+            assertEquals(normalCoord_actual[i][0],coord.getX());
+            assertEquals(normalCoord_actual[i][1],coord.getY());
+        }
+    }
+
+    @Test
+    public void noCoord(){
+        negative(noCoord_test);
+    }
+    @Test
+    public void oneCoord(){
+        negative(oneCoord_test);
+    }
+    @Test
+    public void overTwoCoord(){
+        negative(overTwoCoord_test);
+    }
+    @Test
+    public void invalidCoord(){
+        negative(invalidCoord_test);
+    }
+    @After
+    public void cleanUp(){
+        coord = null;
+    }
+
+
     private void setNormalCoord_case(){ // (1,1~24)~(1~24,1) 모든 일반적인 경우 테스트 케이스 func
         for(int x=0;x<24;x++){
             for(int y=0;y<24;y++){
@@ -83,46 +123,5 @@ public class CoordinateTest {
             assertEquals(-1,coord.getX());
             assertEquals(-1,coord.getY());
         }
-    }
-
-    @Before
-    public void setUp(){
-        coord = new Coordinate();
-        setNormalCoord_case();
-        setOneCoord_test();
-        setOverTwoCoord_test();
-        setInvalidCoord_test();
-    }
-
-    @Test
-    public void normalCoord(){
-        for(int i=0;i<allCase;i++){
-            coord.coordExtraction(normalCoord_test[i]);
-            assertEquals(normalCoord_actual[i][0],coord.getX());
-            assertEquals(normalCoord_actual[i][1],coord.getY());
-        }
-    }
-
-    @Test
-    public void noCoord(){
-        negative(noCoord_test);
-    }
-
-    @Test
-    public void oneCoord(){
-        negative(oneCoord_test);
-    }
-    @Test
-    public void overTwoCoord(){
-        negative(overTwoCoord_test);
-    }
-    @Test
-    public void invalidCoord(){
-        negative(invalidCoord_test);
-    }
-
-    @After
-    public void cleanUp(){
-        coord = null;
     }
 }
