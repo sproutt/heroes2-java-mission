@@ -1,4 +1,4 @@
-package Mission_0;
+package mission0;
 
 public class Coordinate {
     private final int initValue = -1;

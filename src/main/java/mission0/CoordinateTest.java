@@ -1,4 +1,4 @@
-package Mission_0;
+package mission0;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.After;
