@@ -10,6 +10,7 @@ import java.util.Random;
 public class CoordinateTest {
     Coordinate coord;
     Random rand = new Random();
+    private final int negativeCase = -1;
 
     int allCase = 24*24;
     String[] normalCoord_test = new String[allCase];
@@ -43,19 +44,35 @@ public class CoordinateTest {
 
     @Test
     public void noCoord(){
-        negative(noCoord_test);
+        for(int i=0; i< noCoord_test.length;i++){
+            coord.coordExtraction(noCoord_test[0]);
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
+        }
     }
     @Test
     public void oneCoord(){
-        negative(oneCoord_test);
+        for(int i=0; i< oneCoord_test.length;i++){
+            coord.coordExtraction(oneCoord_test[0]);
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
+        }
     }
     @Test
     public void overTwoCoord(){
-        negative(overTwoCoord_test);
+        for(int i=0; i< overTwoCoord_test.length;i++){
+            coord.coordExtraction(overTwoCoord_test[0]);
+            assertEquals(negativeCase,coord.getX());
+            assertEquals(negativeCase,coord.getY());
+        }
     }
     @Test
     public void invalidCoord(){
-        negative(invalidCoord_test);
+        for(int i=0; i< invalidCoord_test.length;i++){
+            coord.coordExtraction(invalidCoord_test[0]);
+            assertEquals(-1,coord.getX());
+            assertEquals(-1,coord.getY());
+        }
     }
     @After
     public void cleanUp(){
@@ -114,14 +131,6 @@ public class CoordinateTest {
             int x = rand.nextInt(10)+25;
             int y = rand.nextInt(25)-25;
             invalidCoord_test[i] = "("+y+","+x+")";
-        }
-    }
-
-    private void negative(String[] test_case){
-        for(int i=0; i< test_case.length;i++){
-            coord.coordExtraction(test_case[0]);
-            assertEquals(-1,coord.getX());
-            assertEquals(-1,coord.getY());
         }
     }
 }
