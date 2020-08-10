@@ -27,14 +27,11 @@ public class CoordinateTest {
     @Before
     public void setUp(){
         coord = new Coordinate();
-        setNormalCoord_case();
-        setOneCoord_test();
-        setOverTwoCoord_test();
-        setInvalidCoord_test();
     }
 
     @Test
     public void normalCoord(){
+        setNormalCoord_case();
         for(int i=0;i<allCase;i++){
             coord.coordExtraction(normalCoord_test[i]);
             assertEquals(normalCoord_actual[i][0],coord.getX());
@@ -52,6 +49,7 @@ public class CoordinateTest {
     }
     @Test
     public void oneCoord(){
+        setOneCoord_test();
         for(int i=0; i< oneCoord_test.length;i++){
             coord.coordExtraction(oneCoord_test[0]);
             assertEquals(negativeCase,coord.getX());
@@ -60,6 +58,7 @@ public class CoordinateTest {
     }
     @Test
     public void overTwoCoord(){
+        setOverTwoCoord_test();
         for(int i=0; i< overTwoCoord_test.length;i++){
             coord.coordExtraction(overTwoCoord_test[0]);
             assertEquals(negativeCase,coord.getX());
@@ -68,6 +67,7 @@ public class CoordinateTest {
     }
     @Test
     public void invalidCoord(){
+        setInvalidCoord_test();
         for(int i=0; i< invalidCoord_test.length;i++){
             coord.coordExtraction(invalidCoord_test[0]);
             assertEquals(-1,coord.getX());
