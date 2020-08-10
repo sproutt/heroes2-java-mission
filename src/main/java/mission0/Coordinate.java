@@ -40,18 +40,18 @@ public class Coordinate {
         }
     }
 
-    private boolean isValidValue(int value){ // 0 이하 25 이상인지 check func
-        boolean ValidCase0 = value>0;
-        boolean ValidCase25 = value<25;
+    private boolean isValidValue(int x, int y){ // 0 이하 25 이상인지 check func
+        boolean ValidCase0 = x>0 && y>0;
+        boolean ValidCase25 = x<25 && y<25;
 
-        if (ValidCase0&&ValidCase25){
+        if (ValidCase0 && ValidCase25){
             return true;
         }
         return false;
     }
 
     private void addCoord(int x, int y){ // 이상 없으면 x,y에 값 할당하는 add func
-        if(isValidValue(x) && isValidValue(y)) {
+        if(isValidValue(x,y)) {
             this.x = x;
             this.y = y;
         }
