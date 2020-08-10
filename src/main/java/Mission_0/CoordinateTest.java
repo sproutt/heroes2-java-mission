@@ -80,8 +80,6 @@ public class CoordinateTest {
     private void negative(String[] test_case){
         for(int i=0; i< test_case.length;i++){
             coord.coordExtraction(test_case[0]);
-            coord.getX();
-            coord.getY();
             assertEquals(-1,coord.getX());
             assertEquals(-1,coord.getY());
         }
@@ -100,8 +98,6 @@ public class CoordinateTest {
     public void normalCoord(){
         for(int i=0;i<allCase;i++){
             coord.coordExtraction(normalCoord_test[i]);
-            coord.getX();
-            coord.getY();
             assertEquals(normalCoord_actual[i][0],coord.getX());
             assertEquals(normalCoord_actual[i][1],coord.getY());
         }

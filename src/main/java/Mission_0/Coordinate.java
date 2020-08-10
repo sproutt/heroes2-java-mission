@@ -19,7 +19,7 @@ public class Coordinate {
         return false;
     }
 
-    private void addCoord(int x, int y){ // 이상 없으면 collection에 좌표 추가하는 add func
+    private void addCoord(int x, int y){ // 이상 없으면 x,y에 값 할당하는 add func
         if(!isWrongValue(x) && !isWrongValue(y)) {
             this.x = x;
             this.y = y;
