@@ -18,12 +18,12 @@ public class PointTest {
 
     @Test
     public void oneInput() {
-        assertEquals("Please enter both X and Y", p.getXY("(8)"));
+        assertEquals("Insufficient factors", p.getXY("(8)"));
     }
 
     @Test
     public void moreInput() {
-        assertEquals("Please enter only X and Y", p.getXY("(8,10,14)"));
+        assertEquals("Too many factors", p.getXY("(8,10,14)"));
     }
 
     @Test

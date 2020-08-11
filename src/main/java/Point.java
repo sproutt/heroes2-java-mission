@@ -1,43 +1,45 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Point {
-    String removeParenthesis(String input) {
-        if (input.charAt(0) == '(')
+    private static final int NUMBER_OF_DIMENSION = 2;
+    private String removeParenthesis(String input) {
+        if (input.charAt(0) == '(') {
             input = input.substring(1);
-        if (input.charAt(input.length() - 1) == ')')
+        }
+        if (input.charAt(input.length() - 1) == ')') {
             input = input.substring(0, input.length() - 1);
+        }
         return input;
     }
 
-    int[] getNumberArray(String input) {
+    private ArrayList<Integer> getNumberArray(String input) {
         String[] stringNumberArray = input.split(",");
-        int[] numberArray = new int[stringNumberArray.length];
-        int i = 0;
-        while (i < stringNumberArray.length) {
-            numberArray[i] = Integer.parseInt(stringNumberArray[i].trim());
-            i++;
+        ArrayList<Integer> numberArray = new ArrayList<>();
+        for (int i = 0; i < stringNumberArray.length; i++) {
+            numberArray.add(Integer.parseInt(stringNumberArray[i].trim()));
         }
         return numberArray;
     }
 
-    String validateNumberArray(int[] arr) {
-        if (arr.length < 2)
-            return "Please enter both X and Y";
-        if (arr.length > 2)
-            return "Please enter only X and Y";
-        int i = 0;
-        while (i < 2) {
-            if (!(1 <= arr[i] && arr[i] <= 24))
-                return "Not a valid number: "+ arr[i];
-            i++;
+    private String validateNumberArray(ArrayList<Integer> arr) {
+        if (arr.size() < NUMBER_OF_DIMENSION)
+            return "Insufficient factors";
+        if (arr.size() > NUMBER_OF_DIMENSION)
+            return "Too many factors";
+        for (int i = 0; i < NUMBER_OF_DIMENSION; i++) {
+            if (arr.get(i) < 1 || 24 < arr.get(i))
+                return "Not a valid number: "+ arr.get(i);
         }
         return "SUCCESS";
     }
 
-    String getXY (String input) {
-        String validation;
+    public String getXY (String input) {
         input = removeParenthesis(input);
-        int[] pointArr = getNumberArray(input);
-        if ((validation = validateNumberArray(pointArr)) != "SUCCESS")
+        ArrayList<Integer> pointArr = getNumberArray(input);
+        String validation = validateNumberArray(pointArr);
+        if (validation != "SUCCESS")
             return validation;
-        return "x=" + pointArr[0] + ", y=" + pointArr[1];
+        return "x=" + pointArr.get(0) + ", y=" + pointArr.get(1);
     }
 }
