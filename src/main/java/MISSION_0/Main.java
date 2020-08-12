@@ -1,4 +1,4 @@
-package mission0;
+package MISSION_0;
 
 public class Main {
 
@@ -15,9 +15,9 @@ public class Main {
                 "(12,413,45)"
         };
 
+        Coordinate test = new Coordinate();
         for(int i=0; i< test_case.length;i++){
-            Coordinate test = new Coordinate();
-            test.coordExtraction(test_case[i]);
+            test.extractCoord(test_case[i]);
             test.printXY();
         }
     }

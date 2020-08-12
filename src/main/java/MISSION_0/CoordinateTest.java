@@ -1,4 +1,4 @@
-package mission0;
+package MISSION_0;
 
 import static org.junit.Assert.assertEquals;
 import org.junit.After;
@@ -10,7 +10,7 @@ import java.util.Random;
 public class CoordinateTest {
     Coordinate coord;
     Random rand = new Random();
-    private final int negativeCase = -1;
+    private final int OUT_OF_RANGE = -1;
 
     int allCase = 24*24;
     String[] normalCoord_testCase = new String[allCase];
@@ -51,7 +51,7 @@ public class CoordinateTest {
 
     @Test
     public void invalidCoord(){
-        InvalidCoordTest();
+        invalidCoordTest();
     }
 
     @After
@@ -106,7 +106,7 @@ public class CoordinateTest {
     private void normalCoordTest() {
         setNormalCoord_case();
         for(int i=0;i<allCase;i++){
-            coord.coordExtraction(normalCoord_testCase[i]);
+            coord.extractCoord(normalCoord_testCase[i]);
             assertEquals(normalCoord_actual[i][0],coord.getX());
             assertEquals(normalCoord_actual[i][1],coord.getY());
         }
@@ -114,36 +114,36 @@ public class CoordinateTest {
 
     private void noCoordTest() {
         for (int i = 0; i < noCoord_testCase.length; i++) {
-            coord.coordExtraction(noCoord_testCase[0]);
-            assertEquals(negativeCase, coord.getX());
-            assertEquals(negativeCase, coord.getY());
+            coord.extractCoord(noCoord_testCase[0]);
+            assertEquals(OUT_OF_RANGE, coord.getX());
+            assertEquals(OUT_OF_RANGE, coord.getY());
         }
     }
 
     private void oneCoordTest() {
         setOneCoord_test();
         for(int i=0; i< oneCoord_testCase.length;i++){
-            coord.coordExtraction(oneCoord_testCase[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
+            coord.extractCoord(oneCoord_testCase[0]);
+            assertEquals(OUT_OF_RANGE,coord.getX());
+            assertEquals(OUT_OF_RANGE,coord.getY());
         }
     }
 
     private void overTwoCoordTest() {
         setOverTwoCoord_test();
         for(int i=0; i< overTwoCoord_testCase.length;i++){
-            coord.coordExtraction(overTwoCoord_testCase[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
+            coord.extractCoord(overTwoCoord_testCase[0]);
+            assertEquals(OUT_OF_RANGE,coord.getX());
+            assertEquals(OUT_OF_RANGE,coord.getY());
         }
     }
 
-    private void InvalidCoordTest() {
+    private void invalidCoordTest() {
         setInvalidCoord_test();
         for(int i=0; i< invalidCoord_testCase.length;i++){
-            coord.coordExtraction(invalidCoord_testCase[0]);
-            assertEquals(negativeCase,coord.getX());
-            assertEquals(negativeCase,coord.getY());
+            coord.extractCoord(invalidCoord_testCase[0]);
+            assertEquals(OUT_OF_RANGE,coord.getX());
+            assertEquals(OUT_OF_RANGE,coord.getY());
         }
     }
 }
