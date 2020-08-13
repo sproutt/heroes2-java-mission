@@ -3,32 +3,32 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class SearchLocationTest {
-    SearchLocation sl;
+public class PointTest {
+    Point point;
+
     @Before
     public void setUp() throws Exception {
-        sl = new SearchLocation();
+        point = new Point();
     }
 
     @Test
     public void oneInput() {
-        assertEquals("oneInput",sl.oneInput(1));
+        assertEquals("좌표 값 하나만 입력됨.",point.Test("(1,)"));
     }
 
     @Test
     public void overTwoInput() {
-        assertEquals("overTwoInput",sl.overTwoInput(1,2,3));
+        assertEquals("좌표 두 개이상 입력됨.",point.Test("(8,10,11)"));
     }
 
     @Test
     public void invalidInput() {
-        assertEquals("invalidInput",sl.invalidInput(25,1));
+        assertEquals("유효하지 않은 값 입력됨.",point.Test("(0,24)"));
     }
 
     @After
     public void tearDown() throws Exception {
-        sl=null;
+        point = null;
     }
-
 
 }
