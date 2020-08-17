@@ -1,11 +1,12 @@
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class InputCarName {
     private static final int MAX_NAME_LENGTH = 5;
     private Scanner scanner;
 
-    public InputCarName() {
-        scanner = new Scanner(System.in);
+    public InputCarName(InputStream inputStream) {
+        scanner = new Scanner(inputStream);
     }
 
     public String[] getCarNames() {
@@ -34,8 +35,10 @@ public class InputCarName {
     }
 
     private void checkLengthLimit(String name) throws InputViewException {
-        if (name.length() > MAX_NAME_LENGTH)
+        if (name.length() > MAX_NAME_LENGTH) {
+            System.out.println(name);
             throw new InputViewException("[Error] 자동차의 이름은 " + MAX_NAME_LENGTH + "자 이하여야 합니다.");
+        }
     }
 
 }

@@ -1,12 +1,12 @@
+import java.io.InputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-//import java.util.InputMismatchException;
 
 public class InputCount {
     private Scanner scanner;
 
-    public InputCount() {
-        scanner = new Scanner(System.in);
+    public InputCount(InputStream inputStream) {
+        scanner = new Scanner(inputStream);
     }
 
     public int getCount() {

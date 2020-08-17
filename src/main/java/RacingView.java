@@ -1,12 +1,13 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class RacingView {
     public void showRaceStart() {
-        System.out.println("경기 시작! 실행결과");
+        System.out.println("실행결과");
     }
 
     public void showRace(List<Car> cars) {
-        for ( Car car: cars) {
+        for (Car car : cars) {
             showCarMovement(car);
         }
     }
@@ -20,11 +21,11 @@ public class RacingView {
     }
 
     public void showWinner(List<Car> winners) {
+        List<String> winnernames = new ArrayList<>();
         for (int i = 0; i < winners.size(); i++) {
-            if (i != 0)
-                System.out.print(", ");
-            System.out.print(winners.get(i).getName());
+            winnernames.add(winners.get(i).getName());
         }
-        System.out.println("가 최종우승 했습니다.");
+        String winnersWithCommas = String.join(", ", winnernames);
+        System.out.println(winnersWithCommas + "가 최종우승 했습니다.");
     }
 }

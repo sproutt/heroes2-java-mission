@@ -1,6 +1,8 @@
 import java.util.Random;
 
 public class Car implements Comparable<Car> {
+    private static final int THRESHOLD = 4;
+    private static final int MAX_POWER = 10;
     private String name;
     private int position;
     private char carChar;
@@ -12,15 +14,15 @@ public class Car implements Comparable<Car> {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getPosition() {
-        return position;
+        return this.position;
     }
 
     public char getCarChar() {
-        return carChar;
+        return this.carChar;
     }
 
     public void setPosition(int position) {
@@ -29,11 +31,12 @@ public class Car implements Comparable<Car> {
 
     public void moveForward() {
         Random random = new Random();
-        int RandNumber = random.nextInt(10);
-        if (RandNumber >= 4)
+        int RandNumber = random.nextInt(MAX_POWER);
+        if (RandNumber >= THRESHOLD)
             this.setPosition(this.getPosition() + 1);
     }
 
+    @Override
     public int compareTo(Car car) {
         return this.getPosition() - car.getPosition();
     }
