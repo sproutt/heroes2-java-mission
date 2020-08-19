@@ -15,13 +15,10 @@ import java.util.Iterator;
 public class RacingGameTest {
     RacingGame game;
     String input;
-    int seed = 2020;
-    Random rand = new Random();
 
     @Before
     public void setUp(){
-        rand.setSeed(seed);
-        game = new RacingGame(seed);
+        game = new RacingGame();
     }
 
     @Test
@@ -45,6 +42,7 @@ public class RacingGameTest {
         ArrayList<String> carPosition = game.getCarPosition();
         Iterator<String> itr = carPosition.iterator();
 
+        Random rand = new Random();
         while(itr.hasNext()){
             int condition = rand.nextInt(10);
             if(condition>=4 && condition <=9){

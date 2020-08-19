@@ -7,10 +7,6 @@ public class RacingGame {
     private int time = 0;
     private ArrayList<String> car = new ArrayList<>();
     private ArrayList<Integer> carPosition = new ArrayList<>();
-    private Random rand = new Random();
-
-    public RacingGame(){}
-    public RacingGame(int seed){ rand.setSeed(seed); }
 
     public void setCar(String input){
         String[] carNames = input.split(",");
@@ -29,6 +25,7 @@ public class RacingGame {
     public void setTime(int time){ this.time = time; }
 
     public void move(){
+        Random rand = new Random();
         for(int index = 0; index < car.size(); index++){
             int condition = rand.nextInt(10);
             if(condition >= 4 && condition <= 9){

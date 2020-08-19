@@ -2,7 +2,6 @@ package MISSION_1.View;
 
 import MISSION_1.RacingGame;
 
-import java.util.Collections;
 import java.util.ArrayList;
 
 public class ResultView{
