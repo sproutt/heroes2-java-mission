@@ -5,10 +5,13 @@ public class InputView {
     static final int MIN_NAME_LENGTH = 1;
     static final int MAX_NAME_LENGTH = 5;
 
-    public Car[] inputCarName() {
+    public String inputCarName() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,) 기준으로 구분).");
-        String inputName = scanner.nextLine();
+        return scanner.nextLine();
+    }
+
+    public Car[] registerCar(String inputName) {
         String[] names = inputName.split(",");
         Car[] car = new Car[names.length];
         for (int i = 0; i < car.length; i++) {

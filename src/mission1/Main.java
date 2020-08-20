@@ -5,7 +5,7 @@ public class Main {
         GameWinner gameWinner = new GameWinner();
         ResultView resultView = new ResultView();
 
-        Car[] car = inputView.inputCarName();
+        Car[] car = inputView.registerCar(inputView.inputCarName());
         int time = inputView.inputTime();
         System.out.println("\n실행 결과");
         for (int i = 0; i < time; i++) {
