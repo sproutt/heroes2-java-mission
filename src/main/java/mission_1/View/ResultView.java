@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class ResultView{
     RacingGame car;
-    ArrayList<String> carNames = new ArrayList<>();
 
     public ResultView(RacingGame car){
         this.car = car;
@@ -14,7 +13,6 @@ public class ResultView{
 
     public void printResult() {
         System.out.println("실행결과");
-        carNames = car.getCar();
 
         for(int i=0;i< car.getTime();i++){
             car.move();
@@ -26,7 +24,9 @@ public class ResultView{
     }
 
     private void printEachCase(){
+        ArrayList<String> carNames = car.getCar();
         ArrayList<Integer> carPosition = car.getCarPosition();
+        
         for(int j=0;j<carNames.size();j++){
             System.out.print(carNames.get(j) + ":");
             for(int k=0;k< carPosition.get(j);k++){
