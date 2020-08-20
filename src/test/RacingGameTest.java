@@ -27,9 +27,9 @@ public class RacingGameTest {
         InputView inputView = new InputView();
         Car[] car = inputView.registerCar("pobi,crong,honux");
 
-        assertThat(car[0].getName(), is(equalTo("pobi")));
-        assertThat(car[1].getName(), is(equalTo("crong")));
-        assertThat(car[2].getName(), is(equalTo("honux")));
+        assertThat(car[0].name, is(equalTo("pobi")));
+        assertThat(car[1].name, is(equalTo("crong")));
+        assertThat(car[2].name, is(equalTo("honux")));
     }
 
     @Test
@@ -46,9 +46,9 @@ public class RacingGameTest {
             racingGame.raceByTime(car);
         }
 
-        assertThat(car[0].getPosition(), instanceOf(int.class));
-        assertThat(car[1].getPosition(), instanceOf(int.class));
-        assertThat(car[2].getPosition(), instanceOf(int.class));
+        assertThat(car[0].position, instanceOf(int.class));
+        assertThat(car[1].position, instanceOf(int.class));
+        assertThat(car[2].position, instanceOf(int.class));
     }
 
     @Test

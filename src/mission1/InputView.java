@@ -17,8 +17,8 @@ public class InputView {
         for (int i = 0; i < car.length; i++) {
             checkValidName(names[i]);
             car[i] = new Car();
-            car[i].setName(names[i]);
-            car[i].setPosition(INITIAL_POSITION);
+            car[i].name = names[i];
+            car[i].position = INITIAL_POSITION;
         }
         return car;
     }
