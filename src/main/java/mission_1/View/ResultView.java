@@ -26,7 +26,7 @@ public class ResultView{
     private void printEachCase(){
         ArrayList<String> carNames = car.getCar();
         ArrayList<Integer> carPosition = car.getCarPosition();
-        
+
         for(int j=0;j<carNames.size();j++){
             System.out.print(carNames.get(j) + ":");
             for(int k=0;k< carPosition.get(j);k++){

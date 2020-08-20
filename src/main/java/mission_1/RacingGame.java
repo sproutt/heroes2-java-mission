@@ -8,14 +8,6 @@ public class RacingGame {
     private ArrayList<String> car = new ArrayList<>();
     private ArrayList<Integer> carPosition = new ArrayList<>();
 
-    public void setCar(String input){
-        String[] carNames = input.split(",");
-        for(String carName : carNames){
-            car.add(carName.trim());
-            carPosition.add(0);
-        }
-    }
-
     public int getTime(){ return time; }
 
     public ArrayList getCar(){ return car; }
@@ -23,6 +15,14 @@ public class RacingGame {
     public ArrayList getCarPosition(){ return carPosition; }
 
     public void setTime(int time){ this.time = time; }
+
+    public void setCar(String input){
+        String[] carNames = input.split(",");
+        for(String carName : carNames){
+            car.add(carName.trim());
+            carPosition.add(0);
+        }
+    }
 
     public void move(){
         Random rand = new Random();
