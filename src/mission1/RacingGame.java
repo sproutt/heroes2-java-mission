@@ -1,13 +1,14 @@
 import java.util.Random;
+import java.util.List;
 
 public class RacingGame {
-    static final int RANDOM_RANGE = 10;
-    static final int MIN_MOVE_STANDARD = 4;
+    private static final int RANDOM_RANGE = 10;
+    private static final int MIN_MOVE_STANDARD = 4;
 
-    public void raceByTime(Car[] car) {
-        for (int i = 0; i < car.length; i++) {
+    public void raceByTime(List<Car> cars) {
+        for (Car car : cars) {
             int randomValue = giveRandomValue();
-            move(car[i], randomValue);
+            move(car, randomValue);
         }
     }
 
@@ -18,7 +19,7 @@ public class RacingGame {
 
     private void move(Car car, int randomValue) {
         if (canMove(randomValue)) {
-            car.addPosition();
+            car.run();
         }
     }
 

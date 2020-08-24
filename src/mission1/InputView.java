@@ -1,9 +1,11 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class InputView {
-    static final int INITIAL_POSITION = 0;
-    static final int MIN_NAME_LENGTH = 1;
-    static final int MAX_NAME_LENGTH = 5;
+    private static final int INITIAL_POSITION = 0;
+    private static final int MIN_NAME_LENGTH = 1;
+    private static final int MAX_NAME_LENGTH = 5;
 
     public String inputCarName() {
         Scanner scanner = new Scanner(System.in);
@@ -11,16 +13,16 @@ public class InputView {
         return scanner.nextLine();
     }
 
-    public Car[] registerCar(String inputName) {
+    public List<Car> registerCar(String inputName) {
         String[] names = inputName.split(",");
-        Car[] car = new Car[names.length];
-        for (int i = 0; i < car.length; i++) {
+        List<Car> cars = new ArrayList<>();
+        for (int i = 0; i < names.length; i++) {
             checkValidName(names[i]);
-            car[i] = new Car();
-            car[i].name = names[i];
-            car[i].position = INITIAL_POSITION;
+            cars.add(new Car());
+            cars.get(i).name = names[i];
+            cars.get(i).position = INITIAL_POSITION;
         }
-        return car;
+        return cars;
     }
 
     public int inputTime() {

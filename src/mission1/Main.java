@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
@@ -5,14 +7,12 @@ public class Main {
         GameWinner gameWinner = new GameWinner();
         ResultView resultView = new ResultView();
 
-        Car[] car = inputView.registerCar(inputView.inputCarName());
+        List<Car> cars = inputView.registerCar(inputView.inputCarName());
         int time = inputView.inputTime();
-        System.out.println("\n실행 결과");
         for (int i = 0; i < time; i++) {
-            racingGame.raceByTime(car);
-            resultView.showResultByTime(car);
-            System.out.println();
+            racingGame.raceByTime(cars);
+            resultView.showResultByTime(cars);
         }
-        resultView.showFinalResult(gameWinner.findWinner(car));
+        resultView.showFinalResult(gameWinner.findWinner(cars));
     }
 }
