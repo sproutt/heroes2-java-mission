@@ -4,30 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    private static final String DRIVE = "-";
-    private List<Car> cars = new ArrayList<>();
-    private int trial;
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
     Rule rule = new Rule();
 
-    public void play() {
-        inputView.inputCarNamesMessage();
-        cars = inputView.inputCarName();
-        inputView.inputCountMessage();
-        trial = inputView.inputTrial();
-
-        for(int i = 0; i < trial; i++) {
-            outputView.resultMessage();
-            race(cars);
-        }
-        getWinner(cars);
-    }
-
-    private void race(List<Car> cars) {
+    public void race(List<Car> cars) {
         for(Car car: cars) {
             goOrStay(car);
-            raceOneTrial(car);
         }
     }
 
@@ -37,15 +18,7 @@ public class Race {
         }
     }
 
-    private void raceOneTrial(Car car) {
-        StringBuilder goSignal = new StringBuilder();
-        for(int i = 0; i<car.getPosition(); i++) {
-            goSignal.append("-");
-        }
-        outputView.oneTrialMessage(car,goSignal);
-    }
-
-    private void getWinner(List<Car> cars) {
+    public List<String> getWinner(List<Car> cars) {
         List<Car> winner = new ArrayList<>();
         int positionOfWinner;
         positionOfWinner = findPositionOfWinner(cars);
@@ -54,7 +27,7 @@ public class Race {
         for(int i = 0; i < winner.size(); i++) {
             winnernames.add(winner.get(i).getName());
         }
-        outputView.getWinnerMessage(winnernames);
+        return winnernames;
     }
 
     private int findPositionOfWinner(List<Car> cars) {

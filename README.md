@@ -24,11 +24,13 @@ ECONOVATION HEROES 2기 2기 Java Racing Game Practice
  - 불필요한 코드 주석 및 공백 제거
  - stream api 적용
  - 게임 시작을 위한 input 과 관련된 print 는 inputview로 옮기기
+ - View 에 대한 책임을 Main(RacingGame) 으로 위임
+ - InputView static 메소드로 구성하여 객체 생성 비용을 절감하기
  
  ######해야할 일
  - 테스트 코드 작성
- - View 에 대한 책임을 Main(RacingGame) 으로 위임
- - InputView static 메소드로 구성하여 객체 생성 비용을 절감하기
+ 테스트 코드를 작성하다보니 public으로만 테스트가 안된다는 점에서 코드가 잘 짜여지지 않다고 느꼈다.
+ 테스트 코드를 먼저 작성하고 그에 맞추어 코드를 작성해야할까?
  
  
  
