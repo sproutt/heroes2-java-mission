@@ -1,5 +1,3 @@
-import java.util.Random;
-
 public class Car {
     private String name;
     private int position;
@@ -17,14 +15,7 @@ public class Car {
         return position;
     }
 
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public void goForward(){
-        Random random = new Random();
-        if(random.nextInt(10) >= 4){
-            this.setPosition(this.getPosition()+1);
-        }
+    public void goForward() {
+        this.position++;
     }
 }

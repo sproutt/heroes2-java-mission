@@ -4,75 +4,63 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    final static String drive = "-";
-    private List<Car> carLineUp = new ArrayList<>();
+    private static final String DRIVE = "-";
+    private List<Car> cars = new ArrayList<>();
     private int trial;
     InputView inputView = new InputView();
     OutputView outputView = new OutputView();
+    Rule rule = new Rule();
 
     public void play() {
-        outputView.inputCarNamesMessage();
-        carLineUp = inputView.input();
-        outputView.inputCountMessage();
-        trial = inputView.inputCount();
+        inputView.inputCarNamesMessage();
+        cars = inputView.inputCarName();
+        inputView.inputCountMessage();
+        trial = inputView.inputTrial();
+
         for(int i = 0; i < trial; i++) {
-            outputView.ResultMessage();
-            race(carLineUp);
+            outputView.resultMessage();
+            race(cars);
         }
-        getWinner(carLineUp);
+        getWinner(cars);
     }
 
-    private void race(List<Car> carLineUp){
-        for(Car car: carLineUp){
-            car.goForward();
+    private void race(List<Car> cars) {
+        for(Car car: cars) {
+            goOrStay(car);
             raceOneTrial(car);
         }
     }
 
-    private void raceOneTrial(Car car){
+    private void goOrStay(Car car) {
+        if(rule.isGoForward()) {
+            car.goForward();
+        }
+    }
+
+    private void raceOneTrial(Car car) {
         StringBuilder goSignal = new StringBuilder();
-        for(int i = 0; i<car.getPosition(); i++){
+        for(int i = 0; i<car.getPosition(); i++) {
             goSignal.append("-");
         }
         outputView.oneTrialMessage(car,goSignal);
     }
 
-    private void getWinner(List<Car> carLineUp) {
-        /*
-        StringBuilder winner = new StringBuilder();
-        int positionOfWinner;
-        positionOfWinner = findPositionOfWinner(carLineUp);
-        for(Car car: carLineUp){
-                winner.append(winnerBuilder(car,positionOfWinner));
-            }
-        System.out.println(String.join(",",winner)+"가 최종 우승했습니다");
-        }
-        */
+    private void getWinner(List<Car> cars) {
         List<Car> winner = new ArrayList<>();
         int positionOfWinner;
-        positionOfWinner = findPositionOfWinner(carLineUp);
-        winner = carLineUp.stream().filter(car -> (car.getPosition() == positionOfWinner)).collect(Collectors.toList());
+        positionOfWinner = findPositionOfWinner(cars);
+        winner = cars.stream().filter(car -> (car.getPosition() == positionOfWinner)).collect(Collectors.toList());
         List<String> winnernames = new ArrayList<>();
-        for(int i = 0; i < winner.size(); i++){
+        for(int i = 0; i < winner.size(); i++) {
             winnernames.add(winner.get(i).getName());
         }
         outputView.getWinnerMessage(winnernames);
     }
 
-    /*
-    private StringBuilder winnerBuilder(Car car, int positionOfWinner){
-        StringBuilder winner = new StringBuilder();
-        if(positionOfWinner == car.getPosition()) {
-            winner.append(car.getName());
-        }
-        return winner;
-    }
-     */
-
-    private int findPositionOfWinner(List<Car> carLineUp){
+    private int findPositionOfWinner(List<Car> cars) {
         List<Integer> position = new ArrayList<>();
         int positionOfWinner;
-        for(Car car: carLineUp){
+        for(Car car: cars) {
             position.add(car.getPosition());
         }
         positionOfWinner = Collections.max(position);
