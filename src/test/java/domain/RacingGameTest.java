@@ -1,3 +1,5 @@
+package domain;
+
 import domain.Car;
 import domain.RacingGame;
 import org.junit.After;
@@ -16,11 +18,6 @@ public class RacingGameTest {
         return (start <= number && number <= end);
     }
 
-    public void setCarsZero(List<Car> cars) {
-        for (int i = 0; i < cars.size(); i++) {
-            cars.get(i).setPosition(0);
-        }
-    }
 
     public List<Integer> getPositionFromCars(List<Car> cars) {
         List<Integer> positions = new ArrayList<>();
@@ -37,7 +34,7 @@ public class RacingGameTest {
     }
 
     @Test
-    public void run() {
+    public void findWinner() {
 
     }
 

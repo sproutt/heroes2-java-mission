@@ -16,10 +16,6 @@ public class RacingGame {
         this.history = new RacingHistory();
     }
 
-    public List<Car> getRacingCars() {
-        return racingCars;
-    }
-
     public RacingHistory getHistory() {
         return history;
     }
