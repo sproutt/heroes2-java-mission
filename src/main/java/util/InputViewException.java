@@ -1,3 +1,5 @@
+package util;
+
 public class InputViewException extends Exception {
     InputViewException() {
         super("Name Exception Occurred");
