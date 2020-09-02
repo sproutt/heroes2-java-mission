@@ -31,11 +31,9 @@ public enum Rank {
         if (countOfMatch == 5 && matchBonus) {
             return SECOND;
         }
-
         Map<Integer, Rank> countOfMatchRankMapWithoutSecond = Stream.of(values()).filter(rank -> rank != SECOND)
                 .collect(Collectors.toMap(Rank::getCountOfMatch, Function.identity()));
         Rank result = countOfMatchRankMapWithoutSecond.get(countOfMatch);
-
         if (result == null) {
             result = MISS;
         }

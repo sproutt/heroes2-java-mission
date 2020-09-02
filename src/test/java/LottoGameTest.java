@@ -24,14 +24,14 @@ public class LottoGameTest {
     public void setManualLottos() {
         lottoGame = new LottoGame(10000);
         lottoGame.setManualLottos(3, manualLottoNumbers);
-        assertEquals(3, lottoGame.getAllLottos().size());
+        assertEquals(3, lottoGame.getAllLotto().size());
     }
 
     @Test
     public void issueAllAutoLottos() {
         lottoGame = new LottoGame(10000);
         assertEquals(10, lottoGame.issueAutoLottos().size());
-        assertEquals(10, lottoGame.getAllLottos().size());
+        assertEquals(10, lottoGame.getAllLotto().size());
     }
 
     @Test
@@ -39,7 +39,7 @@ public class LottoGameTest {
         lottoGame = new LottoGame(10000);
         lottoGame.setManualLottos(3, manualLottoNumbers);
         assertEquals(7, lottoGame.issueAutoLottos().size());
-        assertEquals(10, lottoGame.getAllLottos().size());
+        assertEquals(10, lottoGame.getAllLotto().size());
     }
 
     @After
