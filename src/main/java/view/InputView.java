@@ -7,51 +7,57 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InputView {
-    public static int askPayment(Scanner scanner) {
+    public static int askPayment(Scanner scanner) throws ViewException{
         System.out.println("구입금액을 입력해 주세요.");
         int payment = scanner.nextInt();
-        // TODO payment가 1000원단위가 아닐 때 예외 처리
+        InputValidation.validatePayment(payment);
+
         scanner.nextLine();
         System.out.println();
         return payment;
     }
 
-    public static int askNumberOfManualLottos(Scanner scanner) {
+    public static int askNumberOfManualLottos(Scanner scanner) throws ViewException {
         System.out.println("수동으로 구매할 로또 수를 입력해 주세요.");
-        int NumberOfManualLottos = scanner.nextInt();
-        // TODO 음수일 경우 예외처리
+        int numberOfManualLottos = scanner.nextInt();
+        InputValidation.validateNumberOfLottos(numberOfManualLottos);
+
         scanner.nextLine();
         System.out.println();
-        return NumberOfManualLottos;
+        return numberOfManualLottos;
     }
 
-    public static List<List<Integer>> askManualLottoNumbers(Scanner scanner, int manualCount) {
+    public static List<List<Integer>> askManualLottoNos(Scanner scanner, int manualCount) throws ViewException {
         System.out.println("수동으로 구매할 번호를 입력해 주세요.");
-        List<List<Integer>> manualLottoNumbers = new ArrayList<>();
+        List<List<Integer>> manualLottoNos = new ArrayList<>();
         for (int i = 0; i < manualCount; i++) {
             String numberText = scanner.nextLine();
-            // TODO 숫자가 아닌 입력이 들어온 경우 예외처리
-            manualLottoNumbers.add(parseNumber(numberText));
+            manualLottoNos.add(parseNos(numberText));
         }
+        InputValidation.validateAllLottoNos(manualLottoNos);
+
         System.out.println();
-        return manualLottoNumbers;
+        return manualLottoNos;
     }
 
-    public static List<Integer> askWinningNumbers(Scanner scanner) {
+    public static List<Integer> askWinningNos(Scanner scanner) throws ViewException {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String numberText = scanner.nextLine();
-        // TODO 숫자가 아닌 입력이 들어온 경우 예외처리
-        return parseNumber(numberText);
+
+        List<Integer> winningNos = parseNos(numberText);
+        InputValidation.validateLottoNos(winningNos);
+        return winningNos;
     }
 
-    public static int askBonusNumber(Scanner scanner) {
+    public static int askBonusNo(Scanner scanner) throws ViewException{
         System.out.println("보너스 볼을 입력해 주세요.");
-        int bonusNumber = scanner.nextInt();
+        int bonusNo = scanner.nextInt();
+        InputValidation.validateNoRange(bonusNo);
         scanner.nextLine();
-        return bonusNumber;
+        return bonusNo;
     }
 
-    private static List<Integer> parseNumber(String numberText) {
+    private static List<Integer> parseNos(String numberText) {
         return Stream.of(numberText.split(","))
                 .map(number -> Integer.parseInt(number.trim())).collect(Collectors.toList());
     }
