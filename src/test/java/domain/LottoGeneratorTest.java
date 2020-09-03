@@ -1,3 +1,5 @@
+package domain;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +15,7 @@ public class LottoGeneratorTest {
 
     @Before
     public void setUp() throws Exception {
-        numbers = Arrays.asList(1,2,3,4,5,6);
+        numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
     }
 
     @Test

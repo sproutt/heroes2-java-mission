@@ -1,3 +1,5 @@
+package domain;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +15,7 @@ public class LottoAnalyzerTest {
 
     private List<Lotto> lottos;
     private LottoAnalyzer lottoAnalyzer;
-    private WinningNumbers winningNumbers;
+    private WinningNos winningNos;
 
     @Before
     public void setUp() throws Exception {
@@ -24,15 +26,15 @@ public class LottoAnalyzerTest {
         lottos.add(new Lotto(Arrays.asList(1, 2, 3, 4, 7, 8))); // FOURTH
         lottos.add(new Lotto(Arrays.asList(1, 2, 3, 7, 8, 9))); // FIFTH
         lottos.add(new Lotto(Arrays.asList(1, 2, 7, 8, 9, 10))); // MISS
-        winningNumbers = new WinningNumbers(Arrays.asList(1,2,3,4,5,6), 7);
-        lottoAnalyzer = new LottoAnalyzer(lottos, winningNumbers);
+        winningNos = new WinningNos(Arrays.asList(1, 2, 3, 4, 5, 6), 7);
+        lottoAnalyzer = new LottoAnalyzer(lottos, winningNos);
     }
 
     @Test
-    public void getRankOfLotto() {
+    public void calculateRankOfLotto() {
         List<Rank> ranks = Arrays.asList(Rank.values());
-        for (int i = 0; i < lottos.size() ; i++) {
-            assertEquals(ranks.get(i), lottoAnalyzer.getRankOfLotto(lottos.get(i), winningNumbers));
+        for (int i = 0; i < lottos.size(); i++) {
+            assertEquals(ranks.get(i), lottoAnalyzer.calculateRankOfLotto(lottos.get(i), winningNos));
         }
     }
 

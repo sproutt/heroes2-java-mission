@@ -1,3 +1,10 @@
+package view;
+
+import domain.Lotto;
+import domain.LottoAnalyzer;
+import domain.LottoNo;
+import domain.Rank;
+
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -6,14 +13,12 @@ public class OutputView {
     public static void showAllLottos(List<Lotto> allLotto, int numberOfManualLottos) {
         int numberOfAutoLottos = allLotto.size() - numberOfManualLottos;
         System.out.printf("수동으로 %d장, 자동으로 %d장을 구매했습니다.\n", numberOfManualLottos, numberOfAutoLottos);
-        for (Lotto lotto : allLotto) {
-            System.out.println(showLotto(lotto));
-        }
+        allLotto.stream().forEach(lotto -> showLotto(lotto));
     }
 
-    public static String showLotto(Lotto lotto) {
-        return lotto.getLottoNos().stream().map(LottoNo::getValue).map(number -> number.toString())
-                .collect(Collectors.joining(", ", "[", "]"));
+    public static void showLotto(Lotto lotto) {
+        System.out.println(lotto.getLottoNos().stream().map(LottoNo::getValue).map(number -> number.toString())
+                .collect(Collectors.joining(", ", "[", "]")));
     }
 
     public static void showAnalysis(LottoAnalyzer lottoAnalyzer) {
@@ -26,7 +31,7 @@ public class OutputView {
     }
 
     public static void showEarningRate(double earningRate) {
-        System.out.printf("총 수익률은 %f%%입니다.\n", earningRate);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", earningRate);
     }
 
     private static void showWRanks(LottoAnalyzer lottoAnalyzer) {

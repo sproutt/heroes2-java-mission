@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,36 +10,29 @@ public class LottoAnalyzer {
     private List<Lotto> lottos;
     private List<WinningLotto> winningLottos;
 
-    public LottoAnalyzer(List<Lotto> lottos, WinningNumbers winningNumbers) {
+    public LottoAnalyzer(List<Lotto> lottos, WinningNos winningNos) {
         this.lottos = lottos;
-        winningLottos = lottos.stream().map(lotto -> new WinningLotto(lotto, getRankOfLotto(lotto, winningNumbers)))
+        winningLottos = lottos.stream().map(lotto -> new WinningLotto(lotto, calculateRankOfLotto(lotto, winningNos)))
                 .collect(Collectors.toList());
     }
 
-    public List<WinningLotto> getWinningLotto() {
-        return winningLottos;
-    }
-
-    public Rank getRankOfLotto(Lotto lotto, WinningNumbers winningNumbers) {
-        int countOfMatch = winningNumbers.getWinningNumbers().stream()
-                .filter(lotto::contains).collect(Collectors.toList()).size();
-        boolean matchBonus = lotto.contains(winningNumbers.getBonusNumber());
+    public Rank calculateRankOfLotto(Lotto lotto, WinningNos winningNos) {
+        int countOfMatch = winningNos.countMatchOf(lotto);
+        boolean matchBonus = winningNos.isBonus(lotto);
         return Rank.valueOf(countOfMatch, matchBonus);
     }
 
     public double calculateEarningRate() {
-        // TODO winningLottos가 null인 경우 에러처리
         int inputMoney = lottos.size() * PRICE_PER_LOTTO;
         double earnedMoney = calculateEarnedMoney();
         return Math.round(earnedMoney / inputMoney * PERCENTAGE * 10) / 10.0;
     }
 
     public int calculateEarnedMoney() {
-        // TODO winningLottos가 null인 경우 에러처리
         List<Integer> winningMoneys = winningLottos.stream()
                 .map(winningLotto -> winningLotto.getLottoPrize().getWinningMoney())
                 .collect(Collectors.toList());
-        return winningMoneys.stream().reduce(0, (accumalation, current) -> accumalation + current);
+        return winningMoneys.stream().reduce(0, (accumulation, current) -> accumulation + current);
     }
 
     public int countRank(Rank findingRank) {

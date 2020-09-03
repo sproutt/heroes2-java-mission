@@ -1,5 +1,5 @@
-import org.junit.After;
-import org.junit.Before;
+package domain;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

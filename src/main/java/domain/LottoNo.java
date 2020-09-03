@@ -1,4 +1,4 @@
-import java.util.Objects;
+package domain;
 
 public class LottoNo {
     private Integer value;
@@ -7,14 +7,18 @@ public class LottoNo {
         value = number;
     }
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         LottoNo lottoNo = (LottoNo) o;
         return value == lottoNo.value;
     }

@@ -1,3 +1,5 @@
+package domain;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -5,12 +7,19 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
 public class LottoGameTest {
     private LottoGame lottoGame;
     List<List<Integer>> manualLottoNumbers;
+
+    private void assertArrayEquals(List<Lotto> expectedLottos, List<Lotto> subList) {
+        for (int i = 0; i < expectedLottos.size(); i++) {
+            assertEquals(expectedLottos.get(i), subList.get(i));
+        }
+    }
 
     @Before
     public void setUp() throws Exception {
@@ -22,24 +31,12 @@ public class LottoGameTest {
 
     @Test
     public void setManualLottos() {
-        lottoGame = new LottoGame(10000);
-        lottoGame.setManualLottos(3, manualLottoNumbers);
-        assertEquals(3, lottoGame.getAllLotto().size());
-    }
-
-    @Test
-    public void issueAllAutoLottos() {
-        lottoGame = new LottoGame(10000);
-        assertEquals(10, lottoGame.issueAutoLottos().size());
+        lottoGame = new LottoGame(10000, manualLottoNumbers);
         assertEquals(10, lottoGame.getAllLotto().size());
-    }
 
-    @Test
-    public void issueAutoLottos() {
-        lottoGame = new LottoGame(10000);
-        lottoGame.setManualLottos(3, manualLottoNumbers);
-        assertEquals(7, lottoGame.issueAutoLottos().size());
-        assertEquals(10, lottoGame.getAllLotto().size());
+        List<Lotto> expectedLottos = manualLottoNumbers.stream().map(numbers -> LottoGenerator.generateLottoWithNos(numbers))
+                .collect(Collectors.toList());
+        assertArrayEquals(expectedLottos, lottoGame.getAllLotto().subList(0, 3));
     }
 
     @After
