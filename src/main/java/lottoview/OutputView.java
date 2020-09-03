@@ -5,6 +5,7 @@ import lottodomain.LottoAnalyzer;
 import lottodomain.LottoNo;
 import lottodomain.Rank;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,7 +18,8 @@ public class OutputView {
     }
 
     public static void showLotto(Lotto lotto) {
-        System.out.println(lotto.getLottoNos().stream().map(LottoNo::getValue).map(number -> number.toString())
+        List<LottoNo> lottoNos = lotto.getLottoNos();
+        System.out.println(lottoNos.stream().map(LottoNo::getValue).map(number -> number.toString())
                 .collect(Collectors.joining(", ", "[", "]")));
     }
 
