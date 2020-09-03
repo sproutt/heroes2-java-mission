@@ -1,4 +1,4 @@
-package domain;
+package lottodomain;
 
 import org.junit.Test;
 

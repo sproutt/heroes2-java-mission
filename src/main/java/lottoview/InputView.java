@@ -1,4 +1,4 @@
-package view;
+package lottoview;
 
 import java.util.ArrayList;
 import java.util.List;

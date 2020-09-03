@@ -1,9 +1,9 @@
-package view;
+package lottoview;
 
-import domain.Lotto;
-import domain.LottoAnalyzer;
-import domain.LottoNo;
-import domain.Rank;
+import lottodomain.Lotto;
+import lottodomain.LottoAnalyzer;
+import lottodomain.LottoNo;
+import lottodomain.Rank;
 
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package domain;
+package lottodomain;
 
 public class LottoNo {
     private Integer value;

@@ -1,7 +1,7 @@
-package domain;
+package lottodomain;
 
-import view.InputView;
-import view.OutputView;
+import lottoview.InputView;
+import lottoview.OutputView;
 import java.util.List;
 import java.util.Scanner;
 

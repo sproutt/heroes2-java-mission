@@ -1,4 +1,4 @@
-package domain;
+package lottodomain;
 
 import java.util.Collections;
 import java.util.List;

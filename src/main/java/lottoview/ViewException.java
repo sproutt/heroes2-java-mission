@@ -1,4 +1,4 @@
-package view;
+package lottoview;
 
 public class ViewException extends Exception {
     ViewException() {

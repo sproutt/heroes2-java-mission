@@ -1,4 +1,4 @@
-package domain;
+package lottodomain;
 
 import java.util.*;
 import java.util.function.Function;
