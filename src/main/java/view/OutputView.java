@@ -39,7 +39,7 @@ public class OutputView {
         System.out.println("---------");
         List<Rank> prize = Stream.of(Rank.values()).collect(Collectors.toList());
         prize.remove(Rank.MISS);
-        for (int i = prize.size() - 1; i >= 0 ; i--) {
+        for (int i = prize.size() - 1; i >= 0; i--) {
             int count = lottoAnalyzer.countRank(prize.get(i));
             showRankCount(prize.get(i), count);
         }

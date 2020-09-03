@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class InputView {
-    public static int askPayment(Scanner scanner) throws ViewException{
+    public static int askPayment(Scanner scanner) throws ViewException {
         System.out.println("구입금액을 입력해 주세요.");
         int payment = scanner.nextInt();
         InputValidation.validatePayment(payment);
@@ -49,7 +49,7 @@ public class InputView {
         return winningNos;
     }
 
-    public static int askBonusNo(Scanner scanner) throws ViewException{
+    public static int askBonusNo(Scanner scanner) throws ViewException {
         System.out.println("보너스 볼을 입력해 주세요.");
         int bonusNo = scanner.nextInt();
         InputValidation.validateNoRange(bonusNo);

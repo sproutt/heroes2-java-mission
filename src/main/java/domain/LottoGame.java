@@ -30,7 +30,7 @@ public class LottoGame {
 
     private List<Lotto> issueManualLottos(List<List<Integer>> manualLottoNos) {
         List<Lotto> ManualLottos = new ArrayList<>();
-        for (int i = 0; i < manualLottoNos.size() ; i++) {
+        for (int i = 0; i < manualLottoNos.size(); i++) {
             ManualLottos.add(LottoGenerator.generateLottoWithNos(manualLottoNos.get(i)));
         }
         return ManualLottos;
@@ -38,7 +38,7 @@ public class LottoGame {
 
     private List<Lotto> issueAutoLottos(int numberOfAutoLottos) {
         List<Lotto> autoLottos = new ArrayList<>();
-        for (int i = 0; i < numberOfAutoLottos ; i++) {
+        for (int i = 0; i < numberOfAutoLottos; i++) {
             autoLottos.add(LottoGenerator.generateAutoLotto());
         }
         return autoLottos;

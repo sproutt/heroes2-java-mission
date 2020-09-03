@@ -2,9 +2,6 @@ package domain;
 
 import view.InputView;
 import view.OutputView;
-import view.ViewException;
-
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
