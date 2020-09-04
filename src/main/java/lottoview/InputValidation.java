@@ -4,12 +4,13 @@ import java.util.List;
 
 public class InputValidation {
     private final static int NUMBER_OF_LOTTO_NOS = 6;
+    private final static int PRICE_PER_LOTTO = 1000;
 
     public static void validatePayment(int payment) throws ViewException {
-        if (payment < 1000) {
+        if (payment < PRICE_PER_LOTTO) {
             throw new ViewException("[ViewException] 구입금액은 1000원 이상이어야 합니다");
         }
-        if (payment % 1000 != 0) {
+        if (payment % PRICE_PER_LOTTO != 0) {
             throw new ViewException("[ViewException] 구입금액은 1000원단위로 입력해주세요");
         }
     }
