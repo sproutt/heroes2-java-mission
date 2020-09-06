@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Race {
-    Rule rule = new Rule();
+    private List<String> winnernames = new ArrayList<>();
 
     public void race(List<Car> cars) {
         for(Car car: cars) {
@@ -13,19 +13,16 @@ public class Race {
     }
 
     private void goOrStay(Car car) {
-        if(rule.isGoForward()) {
+        if(Rule.isGoForward()) {
             car.goForward();
         }
     }
 
     public List<String> getWinner(List<Car> cars) {
-        List<Car> winner = new ArrayList<>();
-        int positionOfWinner;
-        positionOfWinner = findPositionOfWinner(cars);
-        winner = cars.stream().filter(car -> (car.getPosition() == positionOfWinner)).collect(Collectors.toList());
-        List<String> winnernames = new ArrayList<>();
-        for(int i = 0; i < winner.size(); i++) {
-            winnernames.add(winner.get(i).getName());
+        int positionOfWinner = findPositionOfWinner(cars);
+        cars = cars.stream().filter(car -> (car.getPosition() == positionOfWinner)).collect(Collectors.toList());
+        for (Car car : cars) {
+            this.winnernames.add(car.getName());
         }
         return winnernames;
     }

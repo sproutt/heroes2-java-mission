@@ -19,8 +19,7 @@ public class RacingGame {
             outputView.oneTrialMessage(cars);
         }
 
-        List<String> winnernames = race.getWinner(cars);
-        outputView.getWinnerMessage(winnernames);
+        outputView.getWinnerMessage(race.getWinner(cars));
     }
 }
 

@@ -26,7 +26,12 @@ ECONOVATION HEROES 2기 2기 Java Racing Game Practice
  - 게임 시작을 위한 input 과 관련된 print 는 inputview로 옮기기
  - View 에 대한 책임을 Main(RacingGame) 으로 위임
  - InputView static 메소드로 구성하여 객체 생성 비용을 절감하기
- 
+ (추가)
+ - 메서드 체이닝을 적용해서 Arrays.stream(trimmedInputCarName).forEach(~~)
+  로 이어 붙이기
+ - util 목적으로 사용하실 클래스 객체 생성 비용 줄이기
+ - 의미없는 메모리 낭비 없애기
+ - 가독성에 유리하게 선언과 할당 같은 곳에서 해주기
  ######해야할 일
  - 테스트 코드 작성
  테스트 코드를 작성하다보니 public으로만 테스트가 안된다는 점에서 코드가 잘 짜여지지 않다고 느꼈다.
