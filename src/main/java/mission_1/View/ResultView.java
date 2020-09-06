@@ -1,43 +1,23 @@
 package MISSION_1.View;
 
-import MISSION_1.RacingGame;
-
-import java.util.ArrayList;
+import java.util.Map;
 
 public class ResultView{
-    RacingGame car;
-
-    public ResultView(RacingGame car){
-        this.car = car;
-    }
-
-    public void printResult() {
+    public void printStart() {
         System.out.println("실행결과");
-
-        for(int i=0;i< car.getTime();i++){
-            car.move();
-            printEachCase();
-            System.out.println();
-        }
-
-        printWinner();
     }
 
-    private void printEachCase(){
-        ArrayList<String> carNames = car.getCar();
-        ArrayList<Integer> carPosition = car.getCarPosition();
-
-        for(int j=0;j<carNames.size();j++){
-            System.out.print(carNames.get(j) + ":");
-            for(int k=0;k< carPosition.get(j);k++){
+    public void printEachCase(Map<String,Integer> cases){
+        for(String eachCase:cases.keySet()){
+            System.out.print(eachCase + ":");
+            for(int k=0;k < (int) cases.get(eachCase);k++){
                 System.out.print("-");
             }
             System.out.println();
         }
     }
 
-    private void printWinner(){
-        String winner = car.winner();
+    public void printResult(String winner){
         System.out.printf("%s가 최종 우승했습니다.",winner);
     }
 }
