@@ -1,26 +1,39 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
-    public static void main(String[] args) {
-        OutputView outputView = new OutputView();
-        Race race = new Race();
-        List<Car> cars = new ArrayList<>();
-        int trial;
+    private List<String> winnernames = new ArrayList<>();
 
-        InputView.inputCarNamesMessage();
-        cars = InputView.inputCarName();
-        InputView.inputCountMessage();
-        trial = InputView.inputTrial();
-
-        for(int i = 0; i < trial; i++) {
-            outputView.resultMessage();
-            race.race(cars);
-            outputView.oneTrialMessage(cars);
+    public void race(List<Car> cars) {
+        for(Car car: cars) {
+            goOrStay(car);
         }
+    }
 
-        outputView.getWinnerMessage(race.getWinner(cars));
+    private void goOrStay(Car car) {
+        if(Rule.isGoForward()) {
+            car.goForward();
+        }
+    }
+
+    public List<String> getWinner(List<Car> cars) {
+        int positionOfWinner = findPositionOfWinner(cars);
+        cars = cars.stream().filter(car -> (car.getPosition() == positionOfWinner)).collect(Collectors.toList());
+        for (Car car : cars) {
+            this.winnernames.add(car.getName());
+        }
+        return winnernames;
+    }
+
+    private int findPositionOfWinner(List<Car> cars) {
+        List<Integer> position = new ArrayList<>();
+        int positionOfWinner;
+        for(Car car: cars) {
+            position.add(car.getPosition());
+        }
+        positionOfWinner = Collections.max(position);
+        return positionOfWinner;
     }
 }
-
-
